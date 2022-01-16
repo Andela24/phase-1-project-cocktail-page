@@ -10,6 +10,8 @@ Cocktail page will be used in order to show specifictly types
 Features
 Home Page
 Martini list page
+Ingredients
+Steps how to make
 Back click button
 
 MVP - Minimum Viable Product
