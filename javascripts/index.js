@@ -1,5 +1,5 @@
 //Global Varialbles
-const baseUrl = 'http://localhost:3000';
+// const baseUrl = 'http://localhost:3000';
 let martinis = [];
 
 
@@ -10,7 +10,8 @@ const mainDiv = () => document.getElementById('main');
 const homeLink = () => document.getElementById('home-link')
 const createMartiniListLink = () => document.getElementById('create-martini-link')
 const listOfFavorites = () => document.getElementById('create-favorites-link')
-const getSearch = () => document.getElementById('search-form')
+const drinkName = () => document.getElementById('strDrink');
+
 
 //Event Listeners
 const attachHomePageLinkEvent = () => {
@@ -69,8 +70,9 @@ const loadCreateMartinis = event => {
     row.appendChild(div1);
     form.appendChild(row);
     form.appendChild(search);
+
     //attach submit listener to the form
-    form.addEventListener('submit', searchForm)
+    form.addEventListener('submit', searchForm);
 
     // <h3>Search Martinis</h3>
     //     <form>
@@ -95,7 +97,6 @@ const loadCreateMartinis = event => {
 
     mainDiv().appendChild(h1);
     mainDiv().appendChild(form);
-    mainDiv().appendChild(search);
 
     // $(document).ready(function() {
     //     $('select').formSelect; //as soon as we load form page
@@ -105,8 +106,10 @@ const loadCreateMartinis = event => {
 
 //Load List of Martinis on Page
 const loadListFavorites = event => {
-    event.preventDefault();
-    resetMainDiv();
+    if(event){
+        event.preventDefault();
+    }
+        resetMainDiv();
 
     const h1 = document.createElement('h1');
     const div = document.createElement('div');
@@ -131,7 +134,7 @@ const loadListFavorites = event => {
         a.className = 'collection-item';
         a.innerText = martini.strDrink
 
-        div.appendChild(a)
+        div.appendChild(a);
     })
 
     // div.appendChild(favorite1)
@@ -147,8 +150,25 @@ const loadListFavorites = event => {
 const searchForm = event => {
     event.preventDefault();
 
+    const jsonObj = {
+        drinkName: drinkName().value
+       
+    } 
+    // console.log(drinkName().value)
+    // fetch('http://localhost:3000/drinks', {
+    //     method: "POST",
+    //     headers: {
+    //         "Accept": "application/json", //and what do you want back 
+    //         "Content-Type": "application/json", //declaring whaat are you sending
+    //     },
+    //     body: JSON.stringify(jsonObj) //strings are universal, stringify and send it back
+    // })
+    //     .then(resp => resp.json())
+    //     .then(data => {
+    //         console.log(data);
+    //     })
 
-    console.log('clicked')
+    // debugger;
 }
 
 
@@ -158,7 +178,7 @@ const loadMartinis = () => {
     fetch('http://localhost:3000/drinks')
     .then(resp => resp.json())
     .then(data => {
-        console.log(data)
+        // console.log(data)
         martinis = data;
     })
 }
