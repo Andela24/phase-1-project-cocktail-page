@@ -10,7 +10,7 @@ const mainDiv = () => document.getElementById('main');
 const homeLink = () => document.getElementById('home-link')
 const createMartiniListLink = () => document.getElementById('create-martini-link')
 const listOfFavorites = () => document.getElementById('create-favorites-link')
-
+const getSearch = () => document.getElementById('search-form')
 
 //Event Listeners
 const attachHomePageLinkEvent = () => {
@@ -56,20 +56,21 @@ const loadCreateMartinis = event => {
     const form = document.createElement('form');
     const row = createRow();
     const div1 = createTextField('strDrink', 'Enter Martini Name', 's6')
-    const button = document.createElement('button');
     
-    button.setAttribute('type', 'submit');
-    button.className = 'btn indigo darken-2';
+    const search = document.createElement('button');
+    
+    search.setAttribute('type', 'search');
+    search.setAttribute('id','search-form');
+    search.className = 'btn indigo darken-2';
 
-    button.addEventListener('submit', submitForm);
 
-    button.innerText = 'Search';
+    search.innerText = 'Search';
 
     row.appendChild(div1);
-    form.appendChild(button)
-
     form.appendChild(row);
-    
+    form.appendChild(search);
+    //attach submit listener to the form
+    form.addEventListener('submit', searchForm)
 
     // <h3>Search Martinis</h3>
     //     <form>
@@ -94,8 +95,7 @@ const loadCreateMartinis = event => {
 
     mainDiv().appendChild(h1);
     mainDiv().appendChild(form);
-    mainDiv().appendChild(button);
-
+    mainDiv().appendChild(search);
 
     // $(document).ready(function() {
     //     $('select').formSelect; //as soon as we load form page
@@ -143,6 +143,15 @@ const loadListFavorites = event => {
     mainDiv().appendChild(div);
 
 }
+//Submit - search button
+const searchForm = event => {
+    event.preventDefault();
+
+
+    console.log('clicked')
+}
+
+
 
 /**REQUESTS **/
 const loadMartinis = () => {
@@ -161,19 +170,20 @@ const createRow = () => {
     div.className = "row";
     return div;
 }
-
+//creating globa h1
 const createH1 = text => {
     const h1 = document.createElement('h1');
     h1.innerText = text;
     return h1;
 }
-
+//Form style
 const createFormCol = colSize => {
     const div = document.createElement('div');
     div.className = "input-field col" + colSize;
     return div;
 }
 
+//creating text field for martini name
 const createTextField = (id, labelText,colSize) => {
     const div = createFormCol(colSize);
     const label = document.createElement('label');
