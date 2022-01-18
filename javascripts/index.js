@@ -28,7 +28,7 @@ const attachFavoritesListLink = () => {
 
 
 
-//event handlers
+//Event Handlers
 const loadHome = event => {
     if(event) {
     event.preventDefault();
@@ -48,7 +48,7 @@ const loadHome = event => {
     mainDiv().appendChild(p);
 }
 
-
+//Search Martinis
 const loadCreateMartinis = event => {
     event.preventDefault();
     resetMainDiv(); //kind a taking us to another page
@@ -58,31 +58,40 @@ const loadCreateMartinis = event => {
     mainDiv().appendChild(h1);
 }
 
+//Load Favorites on Page
 const loadListFavorites = event => {
     event.preventDefault();
     resetMainDiv();
 
     const h1 = document.createElement('h1');
     const div = document.createElement('div');
-    const favorite1 = document.createElement('a');
-    const favorite2 = document.createElement('a');
-    const favorite3 = document.createElement('a')
+    // const favorite1 = document.createElement('a');
+    // const favorite2 = document.createElement('a');
+    // const favorite3 = document.createElement('a')
 
 
     h1.innerText = "Favorites";
-    favorite1.innerText = 'Cosmopolitan Martini';
-    favorite2.innerText = 'Espresso Martini';
-    favorite3.innerText = 'French Martini';
+    // favorite1.innerText = 'Cosmopolitan Martini';
+    // favorite2.innerText = 'Espresso Martini';
+    // favorite3.innerText = 'French Martini';
 
    
     div.className = 'collection';
-    favorite1.className = 'collection-item';
-    favorite2.className = 'collection-item';
-    favorite3.className = 'collection-item';
+    // favorite1.className = 'collection-item';
+    // favorite2.className = 'collection-item';
+    // favorite3.className = 'collection-item';
 
-    div.appendChild(favorite1)
-    div.appendChild(favorite2)
-    div.appendChild(favorite3)
+    martinis.forEach(martini => {
+        const a = document.createElement('a');
+        a.className = 'collection-item';
+        a.innerText = martini.strDrink
+
+        div.appendChild(a)
+    })
+
+    // div.appendChild(favorite1)
+    // div.appendChild(favorite2)
+    // div.appendChild(favorite3)
 
 
     mainDiv().appendChild(h1);
