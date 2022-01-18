@@ -52,8 +52,32 @@ const loadHome = event => {
 const loadCreateMartinis = event => {
     event.preventDefault();
     resetMainDiv(); //kind a taking us to another page
-    const h1 = document.createElement('h1');
-    h1.innerText = 'Search Martinis';
+    const h1 = createH1('Search Martinis')
+    const form = document.createElement('form');
+    const row = createRow;
+    const div1 = document.createElement('div');
+
+
+
+    // <h3>Search Martinis</h3>
+    //     <form>
+    //         <div class="row">
+    //         <div class="input-field col s6">
+    //       <input
+    //         id="strDrink"
+    //         type="text"
+    //         name="name"
+    //         value="">
+    //         <label for="strDrink">Enter Martini Name</label>
+    //         <input
+    //         type="submit"
+    //         name="submit"
+    //         value="Search"
+    //         class="btn indigo darken-2"
+    //       />
+    //     </div>
+    // </div>
+    //     </form> 
 
     mainDiv().appendChild(h1);
 }
@@ -110,8 +134,18 @@ const loadMartinis = () => {
 }
 
 
+//Node Creators, dry principles
+const createRow = () => {
+    const div = document.createElement('div');
+    div.className = "row";
+    return div;
+}
 
-
+const createH1 = text => {
+    const h1 = document.createElement('h1');
+    h1.innerText = text;
+    return h1;
+}
 
 //MISCELLANEOUS
 const resetMainDiv = () => {
