@@ -54,10 +54,13 @@ const loadCreateMartinis = event => {
     resetMainDiv(); //kind a taking us to another page
     const h1 = createH1('Search Martinis')
     const form = document.createElement('form');
-    const row = createRow;
-    const div1 = document.createElement('div');
+    const row = createRow();
+    const div1 = createTextField('strDrink', 'Enter Martini Name', 's6')
 
 
+    row.appendChild(div1);
+
+    form.appendChild(row);
 
     // <h3>Search Martinis</h3>
     //     <form>
@@ -80,6 +83,7 @@ const loadCreateMartinis = event => {
     //     </form> 
 
     mainDiv().appendChild(h1);
+    mainDiv().appendChild(form);
 }
 
 //Load Favorites on Page
@@ -147,6 +151,29 @@ const createH1 = text => {
     return h1;
 }
 
+const createFormCol = colSize => {
+    const div = document.createElement('div');
+    div.className = "input-field col" + colSize;
+    return div;
+}
+
+const createTextField = (id, labelText,colSize) => {
+    const div = createFormCol(colSize);
+    const label = document.createElement('label');
+    const input = document.createElement('input');
+
+    input.setAttribute('type', 'text');
+    input.setAttribute('id', id);
+
+    label.setAttribute('for', id);
+    label.innerText = labelText;
+
+    div.appendChild(input);
+    div.appendChild(label);
+
+    return div;
+}
+
 //MISCELLANEOUS
 const resetMainDiv = () => {
     mainDiv().innerHTML = '';
@@ -156,7 +183,7 @@ const resetMainDiv = () => {
 document.addEventListener('DOMContentLoaded', function() {
     //what do we want to do when the page loads
     loadMartinis();
-    // loadHome();
+    loadHome();
     attachHomePageLinkEvent();
     attachCreateMartiniListLink();
     attachFavoritesListLink();
