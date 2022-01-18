@@ -1,9 +1,60 @@
 //Global Varialbles
+// const fetchArray = () => {
+//     fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=martini")
+//         .then((response) => response.json())
+//         .then(function (json) {
+//             //the json array is what is being
+//             // returned and is 14 items long
+//             martiniArray = json;
+//             // let martiniCollection = document.getElementById("martini-collection");
+//             // makeupArray.forEach((makeup) => (makeupCollection += renderMakeup(makeup)));
+//         });
+// }
+// let martiniArray = []
 
-//event listeners
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Node Getters , used over over again
+const mainDiv = () => document.getElementById('main');
+const homeLink = () => document.getElementById('home-link')
+const createMartiniListLink = () => document.getElementById('create-martini-link')
+const listOfFavorites = () => document.getElementById('create-favorites-link')
+
+
+//Event Listeners
+const attachHomePageLinkEvent = () => {
+homeLink().addEventListener('click', loadHome);
+}
+
+const attachCreateMartiniListLink = () => {
+    createMartiniListLink().addEventListener('click', loadCreateMartinis);
+}
+
+const attachFavoritesListLink = () => {
+    listOfFavorites().addEventListener('click', loadListFavorites);
+}
+
+
+
 
 //event handlers
-const homeLoads = () => {
+const loadHome = event => {
+    if(event) {
+    event.preventDefault();
+    }
+    resetMainDiv(); //when the loadHome triggers first thing we want to reset mainDiv
     const h1 = document.createElement('h1')
     const p = document.createElement('p')
 
@@ -12,14 +63,72 @@ const homeLoads = () => {
 
     //adding text to our classes
     h1.innerText = 'Welcome To The Cocktail Cabinet'
-    h1.innerText = `There's a type of drink to fit your mood and palate. Check out all the drink types you can make and start mixing.`
+    p.innerText = `There's a type of drink to fit your mood and palate. Check out all the drink types you can make and start mixing.`
     
+    mainDiv().appendChild(h1);
+    mainDiv().appendChild(p);
 }
 
 
+const loadCreateMartinis = event => {
+    event.preventDefault();
+    resetMainDiv(); //kind a taking us to another page
+    const h1 = document.createElement('h1');
+    h1.innerText = 'Search Martinis';
 
-//startup
+    mainDiv().appendChild(h1);
+}
+
+const loadListFavorites = event => {
+    event.preventDefault();
+    resetMainDiv();
+
+    const h1 = document.createElement('h1');
+    const div = document.createElement('div');
+    const favorite1 = document.createElement('a');
+    const favorite2 = document.createElement('a');
+    const favorite3 = document.createElement('a')
+
+
+    h1.innerText = "Favorites";
+
+    div.className = 'collection';
+
+    favorite1.innerText = 'Cosmopolitan Martini';
+    favorite2.innerText = 'Espresso Martini';
+    favorite3.innerText = 'French Martini';
+
+
+
+
+    mainDiv().appendChild(h1);
+    mainDiv().appendChild(div);
+
+//     <h1>Favorites</h1>
+   
+//     <div class= "collection">
+//         <a class="collection-item">Cosmopolitan Martini</a>
+//         <br>
+//         <a class="collection-item">Espresso Martini</a>
+//         <br>
+//         <a class="collection-item">French Martini</a>
+//         <br>
+//     </div>
+// </div>
+
+}
+
+
+//MISCELLANEOUS
+const resetMainDiv = () => {
+    mainDiv().innerHTML = '';
+}
+
+// On StartUp
 document.addEventListener('DOMContentLoaded', function() {
     //what do we want to do when the page loads
-    homeLoads()
+    // loadHome();
+    attachHomePageLinkEvent();
+    attachCreateMartiniListLink();
+    attachFavoritesListLink();
 } )
