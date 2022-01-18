@@ -1,27 +1,6 @@
 //Global Varialbles
-// const fetchArray = () => {
-//     fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=martini")
-//         .then((response) => response.json())
-//         .then(function (json) {
-//             //the json array is what is being
-//             // returned and is 14 items long
-//             martiniArray = json;
-//             // let martiniCollection = document.getElementById("martini-collection");
-//             // makeupArray.forEach((makeup) => (makeupCollection += renderMakeup(makeup)));
-//         });
-// }
-// let martiniArray = []
-
-
-
-
-
-
-
-
-
-
-
+const baseUrl = 'http://localhost:3000';
+let martinis = [];
 
 
 
@@ -109,19 +88,20 @@ const loadListFavorites = event => {
     mainDiv().appendChild(h1);
     mainDiv().appendChild(div);
 
-//     <h1>Favorites</h1>
-   
-//     <div class= "collection">
-//         <a class="collection-item">Cosmopolitan Martini</a>
-//         <br>
-//         <a class="collection-item">Espresso Martini</a>
-//         <br>
-//         <a class="collection-item">French Martini</a>
-//         <br>
-//     </div>
-// </div>
-
 }
+
+/**REQUESTS **/
+const loadMartinis = () => {
+    fetch('http://localhost:3000/drinks')
+    .then(resp => resp.json())
+    .then(data => {
+        console.log(data)
+        martinis = data;
+    })
+}
+
+
+
 
 
 //MISCELLANEOUS
@@ -132,7 +112,8 @@ const resetMainDiv = () => {
 // On StartUp
 document.addEventListener('DOMContentLoaded', function() {
     //what do we want to do when the page loads
-    // loadHome();
+    loadMartinis();
+    loadHome();
     attachHomePageLinkEvent();
     attachCreateMartiniListLink();
     attachFavoritesListLink();

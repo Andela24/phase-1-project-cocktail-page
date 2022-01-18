@@ -33,3 +33,8 @@ STRECH
 1. when? DOM Content loaded
 2. cause? Click
 3. Effect: View the Favourites page?
+
+//overview: when we click on favorite cocktail we should see all of the data from database
+1. when? Load DOMContentLoaded
+2. cause? DOMContentLoaded
+3. effect: Fetch all Martinis
