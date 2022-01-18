@@ -56,11 +56,15 @@ const loadCreateMartinis = event => {
     const form = document.createElement('form');
     const row = createRow();
     const div1 = createTextField('strDrink', 'Enter Martini Name', 's6')
+    const button = document.createElement('button');
 
+    button.innerText = 'Search';
 
     row.appendChild(div1);
+    button.appendChild(form)
 
     form.appendChild(row);
+    
 
     // <h3>Search Martinis</h3>
     //     <form>
@@ -73,6 +77,7 @@ const loadCreateMartinis = event => {
     //         value="">
     //         <label for="strDrink">Enter Martini Name</label>
     //         <input
+                // id="submit"
     //         type="submit"
     //         name="submit"
     //         value="Search"
@@ -84,6 +89,13 @@ const loadCreateMartinis = event => {
 
     mainDiv().appendChild(h1);
     mainDiv().appendChild(form);
+    mainDiv().appendChild(button);
+
+
+    // $(document).ready(function() {
+    //     $('select').formSelect; //as soon as we load form page
+    //   });
+    
 }
 
 //Load Favorites on Page
