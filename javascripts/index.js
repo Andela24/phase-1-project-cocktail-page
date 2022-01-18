@@ -122,7 +122,7 @@ const resetMainDiv = () => {
 document.addEventListener('DOMContentLoaded', function() {
     //what do we want to do when the page loads
     loadMartinis();
-    loadHome();
+    // loadHome();
     attachHomePageLinkEvent();
     attachCreateMartiniListLink();
     attachFavoritesListLink();
