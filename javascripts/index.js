@@ -27,8 +27,8 @@ const attachFavoritesListLink = () => {
 
 
 
-
 //Event Handlers
+//Home Page
 const loadHome = event => {
     if(event) {
     event.preventDefault();
@@ -57,11 +57,16 @@ const loadCreateMartinis = event => {
     const row = createRow();
     const div1 = createTextField('strDrink', 'Enter Martini Name', 's6')
     const button = document.createElement('button');
+    
+    button.setAttribute('type', 'submit');
+    button.className = 'btn indigo darken-2';
+
+    button.addEventListener('submit', submitForm);
 
     button.innerText = 'Search';
 
     row.appendChild(div1);
-    button.appendChild(form)
+    form.appendChild(button)
 
     form.appendChild(row);
     
@@ -98,7 +103,7 @@ const loadCreateMartinis = event => {
     
 }
 
-//Load Favorites on Page
+//Load List of Martinis on Page
 const loadListFavorites = event => {
     event.preventDefault();
     resetMainDiv();
