@@ -91,14 +91,19 @@ const loadListFavorites = event => {
 
 
     h1.innerText = "Favorites";
-
-    div.className = 'collection';
-
     favorite1.innerText = 'Cosmopolitan Martini';
     favorite2.innerText = 'Espresso Martini';
     favorite3.innerText = 'French Martini';
 
+   
+    div.className = 'collection';
+    favorite1.className = 'collection-item';
+    favorite2.className = 'collection-item';
+    favorite3.className = 'collection-item';
 
+    div.appendChild(favorite1)
+    div.appendChild(favorite2)
+    div.appendChild(favorite3)
 
 
     mainDiv().appendChild(h1);
