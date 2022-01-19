@@ -57,13 +57,16 @@ const loadCreateMartinis = event => {
     const form = document.createElement('form');
     const row = createRow();
     const div1 = createTextField('strDrink', 'Enter Martini Name', 's6')
-    
+    const container = document.createElement('container')
+    // container.innerHTML = ''
 
     const search = document.createElement('button');
     
+
+    container.setAttribute('id', 'container');
     search.setAttribute('type', 'search');
     search.setAttribute('id','search-form');
-    search.className = 'btn indigo darken-2';
+    search.className = 'btn teal darken-2';
 
 
     search.innerText = 'Search';
@@ -79,11 +82,7 @@ const loadCreateMartinis = event => {
 
     mainDiv().appendChild(h1);
     mainDiv().appendChild(form);
-
-    // $(document).ready(function() {
-    //     $('select').formSelect; //as soon as we load form page
-    //   });
-    
+    mainDiv().appendChild(container);
 }
 
 //Load List of Martinis on Page
@@ -100,7 +99,7 @@ const loadListFavorites = event => {
     // const favorite3 = document.createElement('a')
 
 
-    h1.innerText = "Favorites";
+    h1.innerText = "Like Your Favorite";
     // favorite1.innerText = 'Cosmopolitan Martini';
     // favorite2.innerText = 'Espresso Martini';
     // favorite3.innerText = 'French Martini';
@@ -131,12 +130,22 @@ const loadListFavorites = event => {
 //Submit - search button
 const searchForm = event => {
     event.preventDefault();
+    const container = document.querySelector('#container')
     let input = document.getElementById('strDrink').value.toLowerCase()
-    let searchResult = martinis.filter(drink => drink.strDrink.toLowerCase().includes(input))
+    let searchResult = martinis.filter(drink => drink.strDrink.toLowerCase().includes(input)) //HTML element
     // debugger;
    
+    container.innerHTML = '' //clean out container
     
-    // const container = document.createElement(container)
+    searchResult.forEach(martini => {
+        const p = document.createElement('p')
+     
+        p.innerText = martini.strInstructions //getting instructions
+    //    debugger;
+
+        container.appendChild(p);
+        
+        })
 }
 
 
@@ -198,7 +207,7 @@ const resetMainDiv = () => {
 document.addEventListener('DOMContentLoaded', function() {
     //what do we want to do when the page loads
     loadMartinis();
-    // loadHome();
+    loadHome();
     attachHomePageLinkEvent();
     attachCreateMartiniListLink();
     attachFavoritesListLink();
