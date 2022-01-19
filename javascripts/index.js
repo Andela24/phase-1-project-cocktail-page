@@ -58,6 +58,7 @@ const loadCreateMartinis = event => {
     const row = createRow();
     const div1 = createTextField('strDrink', 'Enter Martini Name', 's6')
     
+
     const search = document.createElement('button');
     
     search.setAttribute('type', 'search');
@@ -74,26 +75,7 @@ const loadCreateMartinis = event => {
     //attach submit listener to the form
     form.addEventListener('submit', searchForm);
 
-    // <h3>Search Martinis</h3>
-    //     <form>
-    //         <div class="row">
-    //         <div class="input-field col s6">
-    //       <input
-    //         id="strDrink"
-    //         type="text"
-    //         name="name"
-    //         value="">
-    //         <label for="strDrink">Enter Martini Name</label>
-    //         <input
-                // id="submit"
-    //         type="submit"
-    //         name="submit"
-    //         value="Search"
-    //         class="btn indigo darken-2"
-    //       />
-    //     </div>
-    // </div>
-    //     </form> 
+    
 
     mainDiv().appendChild(h1);
     mainDiv().appendChild(form);
@@ -149,26 +131,12 @@ const loadListFavorites = event => {
 //Submit - search button
 const searchForm = event => {
     event.preventDefault();
-
-    const jsonObj = {
-        drinkName: drinkName().value
-       
-    } 
-    // console.log(drinkName().value)
-    // fetch('http://localhost:3000/drinks', {
-    //     method: "POST",
-    //     headers: {
-    //         "Accept": "application/json", //and what do you want back 
-    //         "Content-Type": "application/json", //declaring whaat are you sending
-    //     },
-    //     body: JSON.stringify(jsonObj) //strings are universal, stringify and send it back
-    // })
-    //     .then(resp => resp.json())
-    //     .then(data => {
-    //         console.log(data);
-    //     })
-
+    let input = document.getElementById('strDrink').value.toLowerCase()
+    let searchResult = martinis.filter(drink => drink.strDrink.toLowerCase().includes(input))
     // debugger;
+   
+    
+    // const container = document.createElement(container)
 }
 
 
@@ -178,7 +146,7 @@ const loadMartinis = () => {
     fetch('http://localhost:3000/drinks')
     .then(resp => resp.json())
     .then(data => {
-        // console.log(data)
+        // debugger;
         martinis = data;
     })
 }
@@ -230,7 +198,7 @@ const resetMainDiv = () => {
 document.addEventListener('DOMContentLoaded', function() {
     //what do we want to do when the page loads
     loadMartinis();
-    loadHome();
+    // loadHome();
     attachHomePageLinkEvent();
     attachCreateMartiniListLink();
     attachFavoritesListLink();
