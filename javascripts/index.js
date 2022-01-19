@@ -138,13 +138,20 @@ const searchForm = event => {
     container.innerHTML = '' //clean out container
     
     searchResult.forEach(martini => {
-        const p = document.createElement('p')
-     
+        const p = document.createElement('p');
+        const picture = document.createElement('img');
+        const h = document.createElement('h4');
+
+        picture.setAttribute('src', martini.strDrinkThumb) //setting atribut to get pics printed on the page
+        
+        h.innerText = 'Instructions: How To Make?'
         p.innerText = martini.strInstructions //getting instructions
     //    debugger;
 
+        container.appendChild(h);
         container.appendChild(p);
-        
+        container.appendChild(picture);
+
         })
 }
 
