@@ -35,18 +35,30 @@ const loadHome = event => {
     event.preventDefault();
     }
     resetMainDiv(); //when the loadHome triggers first thing we want to reset mainDiv
-    const h1 = document.createElement('h1')
-    const p = document.createElement('p')
+    const h1 = document.createElement('h1');
+    const p = document.createElement('p');
+    const picture = document.createElement('img')
 
     h1.className = 'center-align';
     p.className = 'center-align';
 
+    // picture.setAttribute('id','picture-size')
+    picture.setAttribute('src', 'cocktail.jpeg')
+
+        picture.style.height = '320px'
+        picture.style.width = '520px'
+        // picture.style.tex = "center-align"
+        picture.style.alt = "alt"
+        // picture.className = 'center-align'
+   
     //adding text to our classes
     h1.innerText = 'Welcome To The Cocktail Cabinet'
     p.innerText = `There's a type of drink to fit your mood and palate. Check out all the drink types you can make and start mixing.`
     
     mainDiv().appendChild(h1);
     mainDiv().appendChild(p);
+    mainDiv().appendChild(picture);
+    
 }
 
 //Search Martinis
@@ -58,7 +70,6 @@ const loadCreateMartinis = event => {
     const row = createRow();
     const div1 = createTextField('strDrink', 'Enter Martini Name', 's6')
     const container = document.createElement('container')
-    // container.innerHTML = ''
 
     const search = document.createElement('button');
     
@@ -131,7 +142,7 @@ const loadListFavorites = event => {
 const searchForm = event => {
     event.preventDefault();
     const container = document.querySelector('#container')
-    let input = document.getElementById('strDrink').value.toLowerCase()
+    let input = document.getElementById('strDrink').value.toLowerCase() //getting value of the input
     let searchResult = martinis.filter(drink => drink.strDrink.toLowerCase().includes(input)) //HTML element
     // debugger;
    
@@ -144,8 +155,8 @@ const searchForm = event => {
 
         picture.setAttribute('src', martini.strDrinkThumb) //setting atribut to get pics printed on the page
         
-        h.innerText = 'Instructions: How To Make?'
-        p.innerText = martini.strInstructions //getting instructions
+        h.innerText = 'Instructions: How To Make It?'
+        p.innerText = martini.strInstructions //getting instructions for martini
     //    debugger;
 
         container.appendChild(h);
