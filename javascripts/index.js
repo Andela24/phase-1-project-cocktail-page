@@ -118,11 +118,7 @@ const loadListFavorites = event => {
         a.innerText = martini.strDrink
 
         div.appendChild(a);
-       
-
-        like.addEventListener('click', (e) => {
-            console.log(e)
-        })
+    
     })
 
 
