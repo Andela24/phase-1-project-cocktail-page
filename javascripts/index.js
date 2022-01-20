@@ -42,13 +42,12 @@ const loadHome = event => {
     h1.className = 'center-align';
     p.className = 'center-align';
 
-    // picture.setAttribute('id','picture-size')
+    picture.setAttribute('id','picture-size')
     picture.setAttribute('src', 'cocktail.jpeg')
 
-        picture.style.height = '320px'
+        picture.style.height = '320px' //styiling picture
         picture.style.width = '520px'
         // picture.style.tex = "center-align"
-        picture.style.alt = "alt"
         // picture.className = 'center-align'
    
     //adding text to our classes
