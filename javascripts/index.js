@@ -103,10 +103,7 @@ const loadListFavorites = event => {
 
     const h1 = document.createElement('h1');
     const div = document.createElement('div');
-    const like = document.createElement('button')
     
-    like.innerText = "Like"
-
     h1.innerText = "Here is a list to get you started:";
     
     div.className = 'collection';
@@ -116,10 +113,17 @@ const loadListFavorites = event => {
         const a = document.createElement('a');
         a.className = 'collection-item';
         a.innerText = martini.strDrink
+        const like = document.createElement('button') //like button
+    
+        like.innerText = "Like"
+
 
         div.appendChild(a);
-    
+        a.appendChild(like);
+
     })
+    
+
 
 
     mainDiv().appendChild(h1);
