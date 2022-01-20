@@ -45,10 +45,9 @@ const loadHome = event => {
     picture.setAttribute('id','picture-size')
     picture.setAttribute('src', 'cocktail.jpeg')
 
-        picture.style.height = '320px' //styiling picture
-        picture.style.width = '520px'
-        // picture.style.tex = "center-align"
-        // picture.className = 'center-align'
+        // picture.style.height = '320px' //styiling picture
+        // picture.style.width = '520px'
+        
    
     //adding text to our classes
     h1.innerText = 'Welcome To The Cocktail Cabinet'
@@ -158,7 +157,6 @@ const searchForm = event => {
 
         })
 }
-
 
 
 /**REQUESTS **/

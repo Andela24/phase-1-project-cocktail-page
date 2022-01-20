@@ -3,4 +3,10 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
+    width: 520px;
+    height: 320px;
+}
+
+body{
+    background-color:rgb(252, 247, 237)
 }
