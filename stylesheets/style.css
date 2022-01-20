@@ -1,4 +1,5 @@
-#picture-size {
+.container img#picture-size {
+    align-content: center;
     display: block;
     margin-left: auto;
     margin-right: auto;
