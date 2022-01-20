@@ -47,7 +47,7 @@ const loadHome = event => {
 
         // picture.style.height = '320px' //styiling picture
         // picture.style.width = '520px'
-        
+
    
     //adding text to our classes
     h1.innerText = 'Welcome To The Cocktail Cabinet'
@@ -63,7 +63,7 @@ const loadHome = event => {
 const loadCreateMartinis = event => {
     event.preventDefault();
     resetMainDiv(); //kind a taking us to another page
-    const h1 = createH1('Search Martinis')
+    const h1 = createH1('Find Your Martini')
     const form = document.createElement('form');
     const row = createRow();
     const div1 = createTextField('strDrink', 'Enter Martini Name', 's6')
