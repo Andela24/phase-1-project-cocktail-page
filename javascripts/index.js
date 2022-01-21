@@ -1,9 +1,5 @@
 //Global Varialbles
-// const baseUrl = 'http://localhost:3000';
 let martinis = [];
-
-
-
 
 //Node Getters , used over over again
 const mainDiv = () => document.getElementById('main');
@@ -25,8 +21,6 @@ const attachCreateMartiniListLink = () => {
 const attachFavoritesListLink = () => {
     listOfFavorites().addEventListener('click', loadListFavorites);
 }
-
-
 
 //Event Handlers
 //Home Page
@@ -71,7 +65,6 @@ const loadCreateMartinis = event => {
 
     const search = document.createElement('button');
     
-
     container.setAttribute('id', 'container');
     search.setAttribute('type', 'search');
     search.setAttribute('id','search-form');
@@ -86,8 +79,6 @@ const loadCreateMartinis = event => {
 
     //attach submit listener to the form
     form.addEventListener('submit', searchForm);
-
-    
 
     mainDiv().appendChild(h1);
     mainDiv().appendChild(form);
@@ -123,8 +114,8 @@ const loadListFavorites = event => {
     })
     mainDiv().appendChild(h1);
     mainDiv().appendChild(div);
-
 }
+
 //Submit - search button
 const searchForm = event => {
     event.preventDefault();
@@ -140,7 +131,7 @@ const searchForm = event => {
         const picture = document.createElement('img');
         const h = document.createElement('h4');
 
-        picture.setAttribute('src', martini.strDrinkThumb) //setting atribut to get pics printed on the page
+        picture.setAttribute('src', martini.strDrinkThumb); //setting atribut to get pics printed on the page
         
         h.innerText = 'Instructions:'
         p.innerText = martini.strInstructions //getting instructions for martini
