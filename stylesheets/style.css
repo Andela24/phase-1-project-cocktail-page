@@ -13,3 +13,7 @@ body{
     background-color:rgb(252, 247, 237);
     color: darkslategray;
 }
+a.collection-item button{
+    border-radius: 50%;
+    align-items: right;
+}

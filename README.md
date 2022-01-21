@@ -24,7 +24,7 @@ Enjoy!
 # 🪄  How to use
 
 
-# 👩🏽‍💻 Techonlogy Stack
+# 👩🏽‍💻 Techonology Stack
 * Vanilla JavaScript
 * <a href=" https://www.thecocktaildb.com/api/json/v1/1/search.php?s=martini">Martini Cocktail API</a>
 * JSON Server
