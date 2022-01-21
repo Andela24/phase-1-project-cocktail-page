@@ -23,6 +23,7 @@ const attachFavoritesListLink = () => {
 }
 
 //Event Handlers
+
 //Home Page
 const loadHome = event => {
     if(event) {
@@ -36,7 +37,7 @@ const loadHome = event => {
     h1.className = 'center-align';
     p.className = 'center-align';
 
-    picture.setAttribute('id','picture-size')
+    picture.setAttribute('id','picture-size') //added picture to the home page
     picture.setAttribute('src', 'cocktail.jpeg')
 
         // picture.style.height = '320px' //styiling picture
@@ -150,7 +151,6 @@ const loadMartinis = () => {
     fetch('http://localhost:3000/drinks')
     .then(resp => resp.json())
     .then(data => {
-        // debugger;
         martinis = data;
     })
 }
