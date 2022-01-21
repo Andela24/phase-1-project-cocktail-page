@@ -15,5 +15,11 @@ body{
 }
 a.collection-item button{
     border-radius: 50%;
-    align-items: right;
+    border: 2px solid #4CAF50;
+    margin-left: 650px;
+    padding: 0px 0px 2px;
+}
+a.collection-item{
+    margin-inline-start: 50%;
+    text-align: center;
 }

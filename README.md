@@ -26,6 +26,6 @@ Enjoy!
 
 # 👩🏽‍💻 Techonology Stack
 * Vanilla JavaScript
-* Martini Cocktail API](https://www.thecocktaildb.com/api/json/v1/1/search.php?s=martini)
+* [Martini Cocktail API](https://www.thecocktaildb.com/api/json/v1/1/search.php?s=martini)
 * JSON Server
 ### Note: This is an (Single Page Application) and a MVP (Minimal Viable Project)
