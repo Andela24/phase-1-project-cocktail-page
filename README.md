@@ -23,10 +23,10 @@ Enjoy!
 
 # 🪄  How to use
 1. To see everything this page has to offer, start by clicking on List of Martinis.
-2. When you've discovered something you like, go to Martinis Search.
-3. Type the name of the drink you want to view into the search box and hit Enter or click on Search.
+2. When you've discovered something you like, go to Search Martinis.
+3. Type the name of the drink you want to view into the search box and hit Enter or click on Search button.
 4. You will be given instructions on how to build it as well as a visual representation of how it should appear.
-5.  If you're not sure which martini you want, type "Martini"(capitalization isn't required) into the search box and it will show you a list of all the martinis available, along with directions and a picture.
+5. If you're not sure which martini you want, type "Martini"(capitalization isn't required) into the search box and it will show you a list of all the martinis available, along with directions and a picture.
 
 # 👩🏽‍💻 Techonology Stack
 * Vanilla JavaScript
