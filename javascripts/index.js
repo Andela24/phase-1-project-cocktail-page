@@ -2,7 +2,7 @@
 let martinis = [];
 
 //Node Getters , used over over again
-const mainDiv = () => document.getElementById('main');
+const mainDiv = () => document.getElementById('main'); // mainDiv as an arrow function that way I can recall it not only on load but also when user click on the button
 const homeLink = () => document.getElementById('home-link')
 const createMartiniListLink = () => document.getElementById('create-martini-link')
 const listOfFavorites = () => document.getElementById('create-favorites-link')
@@ -29,22 +29,18 @@ const loadHome = event => {
     if(event) {
     event.preventDefault();
     }
-    resetMainDiv(); //when the loadHome triggers first thing we want to reset mainDiv
+    resetMainDiv(); 
     const h1 = document.createElement('h1');
     const p = document.createElement('p');
-    const picture = document.createElement('img')
+    const picture = document.createElement('img');
 
     h1.className = 'center-align';
     p.className = 'center-align';
 
-    picture.setAttribute('id','picture-size') //added picture to the home page
-    picture.setAttribute('src', 'cocktail.jpeg')
+    picture.setAttribute('id','picture-size');
+    picture.setAttribute('src', 'cocktail.jpeg');
 
-        // picture.style.height = '320px' //styiling picture
-        // picture.style.width = '520px'
-
-   
-    //adding text to our classes
+    
     h1.innerText = 'Welcome To The Cocktail Cabinet'
     p.innerText = `There's a type of drink to fit your mood and palate. Check out all the drink types you can make and start mixing.`
     
@@ -53,19 +49,47 @@ const loadHome = event => {
     mainDiv().appendChild(picture);
     
 }
+//Load List of Martinis on Page
+const loadListFavorites = event => {
+    if(event){
+        event.preventDefault();
+    }
+        resetMainDiv();
+
+    const h1 = document.createElement('h1');
+    const div = document.createElement('div');
+    
+    h1.innerText = "Here is a list to get you started:";
+    
+    div.className = 'collection';
+
+    martinis.forEach(martini => {
+        const a = document.createElement('a');
+        a.className = 'collection-item';
+        a.innerText = martini.strDrink;
+        
+       div.appendChild(a);
+  
+    })
+    mainDiv().appendChild(h1);
+    mainDiv().appendChild(div);
+}
 
 //Search Martinis
 const loadCreateMartinis = event => {
     event.preventDefault();
-    resetMainDiv(); //kind a taking us to another page
-    const h1 = createH1('Find Your Martini')
+    resetMainDiv(); 
+    const h1 = document.createElement('h1')
     const form = document.createElement('form');
     const row = createRow();
-    const div1 = createTextField('strDrink', 'Enter Martini Name', 's6')
-    const container = document.createElement('container')
+    const div1 = createTextField('strDrink', 'Enter Martini Name','s4');
+    const container = document.createElement('container');
+
 
     const search = document.createElement('button');
     
+    h1.innerText = 'Find Your Martini'
+
     container.setAttribute('id', 'container');
     search.setAttribute('type', 'search');
     search.setAttribute('id','search-form');
@@ -86,39 +110,13 @@ const loadCreateMartinis = event => {
     mainDiv().appendChild(container);
 }
 
-//Load List of Martinis on Page
-const loadListFavorites = event => {
-    if(event){
-        event.preventDefault();
-    }
-        resetMainDiv();
-
-    const h1 = document.createElement('h1');
-    const div = document.createElement('div');
-    
-    h1.innerText = "Here is a list to get you started:";
-    
-    div.className = 'collection';
-    
-
-    martinis.forEach(martini => {
-        const a = document.createElement('a');
-        a.className = 'collection-item';
-        a.innerText = martini.strDrink
-
-        div.appendChild(a);
-    })
-    mainDiv().appendChild(h1);
-    mainDiv().appendChild(div);
-}
-
 //Submit - search button
 const searchForm = event => {
     event.preventDefault();
-    const container = document.querySelector('#container')
-    let input = document.getElementById('strDrink').value.toLowerCase() //getting value of the input
-    let searchResult = martinis.filter(drink => drink.strDrink.toLowerCase().includes(input)) //HTML element
-    // debugger;
+    const container = document.querySelector('#container');
+    let input = document.getElementById('strDrink').value.toLowerCase(); //getting value of the input
+    let searchResult = martinis.filter(drink => drink.strDrink.toLowerCase().includes(input)); //HTML element
+    
    
     container.innerHTML = '' //clean out container
     
@@ -129,9 +127,9 @@ const searchForm = event => {
 
         picture.setAttribute('src', martini.strDrinkThumb); //setting atribut to get pics printed on the page
         
-        h.innerText = 'Instructions:'
-        p.innerText = martini.strInstructions //getting instructions for martini
-    //    debugger;
+        h.innerText = 'Instructions:';
+        p.innerText = martini.strInstructions; //getting instructions for martini
+    
 
         container.appendChild(h);
         container.appendChild(p);
@@ -158,11 +156,12 @@ const createRow = () => {
     return div;
 }
 //creating globa h1
-const createH1 = text => {
-    const h1 = document.createElement('h1');
-    h1.innerText = text;
-    return h1;
-}
+// const createH1 = text => {
+//     const h1 = document.createElement('h1');
+//     h1.innerText = text;
+//     return h1;
+// }
+
 //Form style
 const createFormCol = colSize => {
     const div = document.createElement('div');
@@ -195,7 +194,6 @@ const resetMainDiv = () => {
 
 // On StartUp
 document.addEventListener('DOMContentLoaded', function() {
-    //what do we want to do when the page loads
     loadMartinis();
     loadHome();
     attachHomePageLinkEvent();
