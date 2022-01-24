@@ -39,3 +39,10 @@ STRECH
 1. when? Load DOMContentLoaded
 2. cause? DOMContentLoaded
 3. effect: Fetch all Martinis
+
+//creating global h1
+// const createH1 = text => {
+//     const h1 = document.createElement('h1');
+//     h1.innerText = text;
+//     return h1;
+// }

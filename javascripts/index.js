@@ -2,7 +2,7 @@
 let martinis = [];
 
 //Node Getters , used over over again
-const mainDiv = () => document.getElementById('main'); // mainDiv as an arrow function that way I can recall it not only on load but also when user click on the button
+const mainDiv = () => document.getElementById('main'); 
 const homeLink = () => document.getElementById('home-link')
 const createMartiniListLink = () => document.getElementById('create-martini-link')
 const listOfFavorites = () => document.getElementById('create-favorites-link')
@@ -15,20 +15,17 @@ homeLink().addEventListener('click', loadHome);
 }
 
 const attachCreateMartiniListLink = () => {
-    createMartiniListLink().addEventListener('click', loadCreateMartinis);
+    createMartiniListLink().addEventListener('click', loadSearchMartinis);
 }
 
 const attachFavoritesListLink = () => {
-    listOfFavorites().addEventListener('click', loadListFavorites);
+    listOfFavorites().addEventListener('click', loadListOfMartinis);
 }
 
 //Event Handlers
 
 //Home Page
 const loadHome = event => {
-    if(event) {
-    event.preventDefault();
-    }
     resetMainDiv(); 
     const h1 = document.createElement('h1');
     const p = document.createElement('p');
@@ -50,11 +47,8 @@ const loadHome = event => {
     
 }
 //Load List of Martinis on Page
-const loadListFavorites = event => {
-    if(event){
-        event.preventDefault();
-    }
-        resetMainDiv();
+const loadListOfMartinis = event => { 
+    resetMainDiv();
 
     const h1 = document.createElement('h1');
     const div = document.createElement('div');
@@ -76,8 +70,7 @@ const loadListFavorites = event => {
 }
 
 //Search Martinis
-const loadCreateMartinis = event => {
-    event.preventDefault();
+const loadSearchMartinis = event => {
     resetMainDiv(); 
     const h1 = document.createElement('h1')
     const form = document.createElement('form');
@@ -102,7 +95,7 @@ const loadCreateMartinis = event => {
     form.appendChild(row);
     form.appendChild(search);
 
-    //attach submit listener to the form
+   
     form.addEventListener('submit', searchForm);
 
     mainDiv().appendChild(h1);
@@ -112,23 +105,23 @@ const loadCreateMartinis = event => {
 
 //Submit - search button
 const searchForm = event => {
-    event.preventDefault();
+    event.preventDefault()
     const container = document.querySelector('#container');
-    let input = document.getElementById('strDrink').value.toLowerCase(); //getting value of the input
-    let searchResult = martinis.filter(drink => drink.strDrink.toLowerCase().includes(input)); //HTML element
+    let input = document.getElementById('strDrink').value.toLowerCase(); 
+    let searchResult = martinis.filter(drink => drink.strDrink.toLowerCase().includes(input)); 
     
    
-    container.innerHTML = '' //clean out container
+    container.innerHTML = '' 
     
     searchResult.forEach(martini => {
         const p = document.createElement('p');
         const picture = document.createElement('img');
         const h = document.createElement('h4');
 
-        picture.setAttribute('src', martini.strDrinkThumb); //setting atribut to get pics printed on the page
+        picture.setAttribute('src', martini.strDrinkThumb); 
         
         h.innerText = 'Instructions:';
-        p.innerText = martini.strInstructions; //getting instructions for martini
+        p.innerText = martini.strInstructions; 
     
 
         container.appendChild(h);
@@ -155,12 +148,6 @@ const createRow = () => {
     div.className = "row";
     return div;
 }
-//creating globa h1
-// const createH1 = text => {
-//     const h1 = document.createElement('h1');
-//     h1.innerText = text;
-//     return h1;
-// }
 
 //Form style
 const createFormCol = colSize => {
@@ -193,7 +180,7 @@ const resetMainDiv = () => {
 }
 
 // On StartUp
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
     loadMartinis();
     loadHome();
     attachHomePageLinkEvent();
