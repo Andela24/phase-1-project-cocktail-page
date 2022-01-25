@@ -1,8 +1,8 @@
 //Global Varialbles
 let martinis = [];
 
-//Node Getters , used over over again
-const mainDiv = () => document.getElementById('main'); 
+//Node Getters 
+const mainDiv = () =>  document.getElementById('main'); 
 const homeLink = () => document.getElementById('home-link')
 const createMartiniListLink = () => document.getElementById('create-martini-link')
 const listOfFavorites = () => document.getElementById('create-favorites-link')
@@ -156,7 +156,7 @@ const createFormCol = colSize => {
     return div;
 }
 
-//creating text field for martini name
+//Creating text field 
 const createTextField = (id, labelText,colSize) => {
     const div = createFormCol(colSize);
     const label = document.createElement('label');
