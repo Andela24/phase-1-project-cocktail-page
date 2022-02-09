@@ -32,4 +32,4 @@ Enjoy!
 * Vanilla JavaScript
 * [Martini Cocktail API](https://www.thecocktaildb.com/api/json/v1/1/search.php?s=martini)
 * JSON Server
-### Note: This is an (Single Page Application) and a MVP (Minimal Viable Project)
+### Note: This is an SPA (Single Page Application) and a MVP (Minimal Viable Project)

@@ -181,8 +181,8 @@ const resetMainDiv = () => {
 
 // On StartUp
 document.addEventListener('DOMContentLoaded', () => {
-    loadMartinis();
     loadHome();
+    loadMartinis();
     attachHomePageLinkEvent();
     attachCreateMartiniListLink();
     attachFavoritesListLink();
