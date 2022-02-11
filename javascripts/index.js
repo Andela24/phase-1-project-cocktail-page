@@ -1,8 +1,8 @@
 //Global Varialbles
 let martinis = [];
 
-//Node Getters 
-const mainDiv = () =>  document.getElementById('main'); 
+//Node Getters
+const mainDiv = () => document.getElementById('main');
 const homeLink = () => document.getElementById('home-link')
 const createMartiniListLink = () => document.getElementById('create-martini-link')
 const listOfFavorites = () => document.getElementById('create-favorites-link')
@@ -11,7 +11,7 @@ const drinkName = () => document.getElementById('strDrink');
 
 //Event Listeners
 const attachHomePageLinkEvent = () => {
-homeLink().addEventListener('click', loadHome);
+    homeLink().addEventListener('click', loadHome);
 }
 
 const attachCreateMartiniListLink = () => {
@@ -26,7 +26,7 @@ const attachFavoritesListLink = () => {
 
 //Home Page
 const loadHome = event => {
-    resetMainDiv(); 
+    resetMainDiv();
     const h1 = document.createElement('h1');
     const p = document.createElement('p');
     const picture = document.createElement('img');
@@ -34,36 +34,44 @@ const loadHome = event => {
     h1.className = 'center-align';
     p.className = 'center-align';
 
-    picture.setAttribute('id','picture-size');
+    picture.setAttribute('id', 'picture-size');
     picture.setAttribute('src', 'cocktail.jpeg');
 
-    
+
     h1.innerText = 'Welcome To The Cocktail Cabinet'
     p.innerText = `There's a type of drink to fit your mood and palate. Check out all the drink types you can make and start mixing.`
-    
+
     mainDiv().appendChild(h1);
     mainDiv().appendChild(p);
     mainDiv().appendChild(picture);
-    
+
 }
 //Load List of Martinis on Page
-const loadListOfMartinis = event => { 
+const loadListOfMartinis = event => {
     resetMainDiv();
 
     const h1 = document.createElement('h1');
     const div = document.createElement('div');
-    
+
     h1.innerText = "Here is a list to get you started:";
-    
+
     div.className = 'collection';
 
     martinis.forEach(martini => {
+        console.log(martini);
+        const likeBtn = document.createElement('button');
         const a = document.createElement('a');
         a.className = 'collection-item';
         a.innerText = martini.strDrink;
-        
-       div.appendChild(a);
-  
+        likeBtn.innerText = 'Like'
+        likeBtn.style.fontSize = '2em'
+        likeBtn.addEventListener('click', () => {
+            if (likeBtn.innerText === 'Like') likeBtn.innerText = 'Dislike'
+            else if (likeBtn.innerText === 'Dislike') likeBtn.innerText = 'Like'
+        })
+        div.appendChild(a);
+        div.appendChild(likeBtn);
+
     })
     mainDiv().appendChild(h1);
     mainDiv().appendChild(div);
@@ -71,21 +79,21 @@ const loadListOfMartinis = event => {
 
 //Search Martinis
 const loadSearchMartinis = event => {
-    resetMainDiv(); 
+    resetMainDiv();
     const h1 = document.createElement('h1')
     const form = document.createElement('form');
     const row = createRow();
-    const div1 = createTextField('strDrink', 'Enter Martini Name','s4');
+    const div1 = createTextField('strDrink', 'Enter Martini Name', 's4');
     const container = document.createElement('container');
 
 
     const search = document.createElement('button');
-    
+
     h1.innerText = 'Find Your Martini'
 
     container.setAttribute('id', 'container');
     search.setAttribute('type', 'search');
-    search.setAttribute('id','search-form');
+    search.setAttribute('id', 'search-form');
     search.className = 'btn teal darken-2';
 
 
@@ -95,7 +103,7 @@ const loadSearchMartinis = event => {
     form.appendChild(row);
     form.appendChild(search);
 
-   
+
     form.addEventListener('submit', searchForm);
 
     mainDiv().appendChild(h1);
@@ -107,38 +115,38 @@ const loadSearchMartinis = event => {
 const searchForm = event => {
     event.preventDefault()
     const container = document.querySelector('#container');
-    let input = document.getElementById('strDrink').value.toLowerCase(); 
-    let searchResult = martinis.filter(drink => drink.strDrink.toLowerCase().includes(input)); 
-    
-   
-    container.innerHTML = '' 
-    
+    let input = document.getElementById('strDrink').value.toLowerCase();
+    let searchResult = martinis.filter(drink => drink.strDrink.toLowerCase().includes(input));
+
+
+    container.innerHTML = ''
+
     searchResult.forEach(martini => {
         const p = document.createElement('p');
         const picture = document.createElement('img');
         const h = document.createElement('h4');
 
-        picture.setAttribute('src', martini.strDrinkThumb); 
-        
+        picture.setAttribute('src', martini.strDrinkThumb);
+
         h.innerText = 'Instructions:';
-        p.innerText = martini.strInstructions; 
-    
+        p.innerText = martini.strInstructions;
+
 
         container.appendChild(h);
         container.appendChild(p);
         container.appendChild(picture);
 
-        })
+    })
 }
 
 
 /**REQUESTS **/
 const loadMartinis = () => {
     fetch('http://localhost:3000/drinks')
-    .then(resp => resp.json())
-    .then(data => {
-        martinis = data;
-    })
+        .then(resp => resp.json())
+        .then(data => {
+            martinis = data;
+        })
 }
 
 
@@ -156,8 +164,8 @@ const createFormCol = colSize => {
     return div;
 }
 
-//Creating text field 
-const createTextField = (id, labelText,colSize) => {
+//Creating text field
+const createTextField = (id, labelText, colSize) => {
     const div = createFormCol(colSize);
     const label = document.createElement('label');
     const input = document.createElement('input');
@@ -186,4 +194,4 @@ document.addEventListener('DOMContentLoaded', () => {
     attachHomePageLinkEvent();
     attachCreateMartiniListLink();
     attachFavoritesListLink();
-} )
+})
